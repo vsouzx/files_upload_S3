@@ -26,4 +26,8 @@
 <br><br/>
 <p>3. Also before running the project, you need to run the docker-compose.yml file to start the mongodb.</p>
 <p>You can do this, running this command in your terminal: <code>docker compose up -d</code> </p>
+
+<br><br/>
+
+<br><br/>
 <p>Then you´re ready to run the project.</p>
