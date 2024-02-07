@@ -48,7 +48,7 @@ public class S3Service {
             return IOUtils.toByteArray(s3ObjectInputStream);
         }catch (Exception e){
             log.error("Error to download file from S3 Bucket.", e);
-            throw e;
         }
+        return null;
     }
 }
