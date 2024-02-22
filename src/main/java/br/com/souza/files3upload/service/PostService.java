@@ -4,6 +4,8 @@ import br.com.souza.files3upload.database.model.Post;
 import br.com.souza.files3upload.database.repository.IPostRepository;
 import br.com.souza.files3upload.dto.PostResponse;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -40,10 +42,12 @@ public class PostService {
         }
     }
 
-    public PostResponse findById(String uuid) throws Exception {
-        Post post = iPostRepository.findById(UUID.fromString(uuid))
-                .orElseThrow(Exception::new);
+    public List<PostResponse> findAll() throws Exception {
+        List<PostResponse> response = new ArrayList<>();
+        for(Post post : iPostRepository.findAll()){
+            response.add(new PostResponse(post, s3Service));
+        }
 
-        return new PostResponse(post, s3Service);
+        return response;
     }
 }
